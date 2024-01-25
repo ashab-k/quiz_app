@@ -45,13 +45,26 @@ const Quiz = () => {
         setCurrentScore(currentScore + 1);
       } else {
         e.target.classList.add("wrong");
+        const correctIndex =
+          question[currentQuestionIndex].options.indexOf(correctAnswer);
+        const correctOptionElement =
+          e.target.parentNode.childNodes[correctIndex];
+        correctOptionElement.classList.add("correct");
       }
     }
+  };
+
+  const resetClasses = () => {
+    const options = document.querySelectorAll(".options li");
+    options.forEach((option) => {
+      option.classList.remove("correct", "wrong");
+    });
   };
 
   const handleNext = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     setAnswerSelected(false);
+    resetClasses();
   };
 
   const options = question[currentQuestionIndex].options;
