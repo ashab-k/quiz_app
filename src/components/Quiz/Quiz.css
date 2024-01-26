@@ -14,9 +14,11 @@ body {
   max-width: 600px;
   background-color: #e0e1dd;
   margin: auto;
-  margin-top: 8rem;
+  margin-top: 4rem;
   padding: 2rem;
   border-radius: 20px;
+  position: relative;
+  height: 80vh;
 }
 
 .options {
@@ -39,10 +41,14 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  right: 43%;
+  bottom: 1rem;
 }
 
 .btn button {
   background: none;
+
   border: none;
   padding: 10px;
   font-size: 1.5rem;
@@ -55,7 +61,7 @@ li {
 
 .question {
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 h1 {

@@ -7,28 +7,51 @@ const Quiz = () => {
   const [question, setQuestion] = useState([
     {
       id: 0,
-      question:
-        'In the anime "Naruto," what is the name of Naruto Uzumaki\'s sensei?',
-      options: ["Kakashi Hatake", "Jiraiya", "Orochimaru", "Iruka Umino"],
-      correctAnswer: "Kakashi Hatake",
+      question: "What does HTML stand for?",
+      options: [
+        "Hyper Text Markup Language",
+        "Highly Typed Modular Language",
+        "Hyper Transferable Markup Language",
+        "Home Tool Markup Language",
+      ],
+      correctAnswer: "Hyper Text Markup Language",
     },
     {
       id: 1,
       question:
-        'Which anime features a high school club where the main characters play the game "Keijo"?',
-      options: ["My Hero Academia", "Free!", "Haikyuu!!", "Keijo!!!!!!!!"],
-      correctAnswer: "Keijo!!!!!!!!",
+        "Which CSS property is used to control the layout flow of the document and the positioning of its content?",
+      options: ["float", "position", "display", "clear"],
+      correctAnswer: "position",
     },
     {
       id: 2,
-      question: 'In "One Piece," what is the name of Monkey D. Luffy\'s ship?',
+      question: "What is the purpose of JavaScript?",
       options: [
-        "Soul King",
-        "Going Merry",
-        "Straw Hat Franky",
-        "Thousand Sunny",
+        "To style web pages",
+        "To structure web content",
+        "To program the behavior of web pages",
+        "To define web page layout",
       ],
-      correctAnswer: "Going Merry",
+      correctAnswer: "To program the behavior of web pages",
+    },
+    {
+      id: 3,
+      question:
+        "What is the role of a version control system like Git in web development?",
+      options: [
+        "To format HTML code",
+        "Tracking changes and collaboration",
+        "To design database structures",
+        "To test website performance",
+      ],
+      correctAnswer: "Tracking changes and collaboration",
+    },
+    {
+      id: 4,
+      question:
+        "Which of the following is a JavaScript framework/library for building user interfaces?",
+      options: ["Django", "React", "Express", "Flask"],
+      correctAnswer: "React",
     },
   ]);
 
@@ -62,17 +85,23 @@ const Quiz = () => {
   };
 
   const handleNext = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    setAnswerSelected(false);
-    resetClasses();
+    if (currentQuestionIndex < question.length - 1) {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+      setAnswerSelected(false);
+      resetClasses();
+    } else {
+      return;
+    }
   };
 
   const options = question[currentQuestionIndex].options;
   return (
     <div className="container">
-      <h1>Quiz App</h1>
+      <h1>Quiz</h1>
       <hr />
-      <h2 className="question">{question[currentQuestionIndex].question}</h2>
+      <h2 className="question">
+        {currentQuestionIndex + 1}. {question[currentQuestionIndex].question}
+      </h2>
       <ul className="options">
         <li onClick={(e) => checkAnswer(e, options[0])}>{options[0]}</li>
         <li onClick={(e) => checkAnswer(e, options[1])}>{options[1]}</li>
